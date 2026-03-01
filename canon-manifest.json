@@ -1,0 +1,89 @@
+{
+  "canonical_documents": [
+    {
+      "pillar": "Canon Index (starting context)",
+      "file_path": "CANON.md",
+      "uuid": "76123faa-d6b9-41f4-b56b-ede07519db37",
+      "version": "1.0.0",
+      "checksum": "a22e53586ffa6c18cc34c6df7cf45b4729ebf95e9a958121b07d358131a0c54f"
+    }
+  ],
+  "extended_index": [
+    {
+      "uuid": "76123faa-d6b9-41f4-b56b-ede07519db37",
+      "file_path": "CANON.md",
+      "title": "[Campaign Name] Canon Index",
+      "version": "1.0.0",
+      "status": "Canon",
+      "canonical_scope": "CAMPAIGN/CANON-INDEX",
+      "last_updated": "2026-03-01",
+      "checksum": "a22e53586ffa6c18cc34c6df7cf45b4729ebf95e9a958121b07d358131a0c54f",
+      "release_history": [
+        {
+          "from": "N/A",
+          "to": "1.0.0",
+          "notes": [
+            "Initial CANON.md template"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "d22d114d-b449-418c-8c1f-562189e68e60",
+      "file_path": "templates/lore-template.md",
+      "title": "[Location / Setting / Lore Title]",
+      "version": "1.0.0",
+      "status": "Draft",
+      "canonical_scope": "[CAMPAIGN/SETTING/SUBCATEGORY]",
+      "last_updated": "YYYY-MM-DD",
+      "checksum": "f66d73f871981e38e6e2fb3bdaa64a5c739ce7a8f47b2414a90837e423d4f20c",
+      "release_history": [
+        {
+          "from": "N/A",
+          "to": "1.0.0",
+          "notes": [
+            "Initial document created from CampaignLoreLM lore template"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "49c9b705-e729-4981-a6be-fe19d574fc49",
+      "file_path": "templates/npc-template.md",
+      "title": "NPC — [Character Full Name]",
+      "version": "1.0.0",
+      "status": "Draft",
+      "canonical_scope": "[CAMPAIGN/NPCS/NAME-OR-CATEGORY]",
+      "last_updated": "YYYY-MM-DD",
+      "checksum": "d2525d8f8daf673db508dacd98a0927a675ec242a1ac5164ed09c625e38094a2",
+      "release_history": [
+        {
+          "from": "N/A",
+          "to": "1.0.0",
+          "notes": [
+            "Initial NPC profile created from CampaignLoreLM NPC template"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "13da7f2f-f8a7-4a1d-97e7-004153ddc373",
+      "file_path": "templates/pc-template.md",
+      "title": "PC Lore — [Character Name]",
+      "version": "1.0.0",
+      "status": "Canon",
+      "canonical_scope": "[CAMPAIGN/STORY/PCS/CHARACTER-NAME]",
+      "last_updated": "YYYY-MM-DD",
+      "checksum": "0f08e4b4f55e8b1fef26f440ebe82313bc0755f41b52a7f7bc268c7cc09bbbc5",
+      "release_history": [
+        {
+          "from": "N/A",
+          "to": "1.0.0",
+          "notes": [
+            "Initial PC lore file created from CampaignLoreLM PC template"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# pre-commit hook — validates staged lore documents before commit.
+# Installed via: bash scripts/install-hooks.sh  (one-time per clone)
+#
+# Checks every staged .md file that contains a metadata block (^___$):
+#   1. metadata-lint.sh   — required trailing spaces on metadata field lines
+#   2. checksum-verify.sh — body SHA-256 matches Checksum: header field
+# Then runs canon-validate.sh (manifest + CANON.md inline pointers).
+#
+# To bypass (deliberate dirty-state commit only):
+#   git commit --no-verify
+
+set -uo pipefail
+
+EXIT=0
+
+# Collect staged .md files — use while loop instead of mapfile for bash 3.x
+# compatibility (macOS ships bash 3.2).
+staged=()
+while IFS= read -r line; do
+  [[ -n "$line" ]] && staged+=("$line")
+done < <(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep '\.md$' || true)
+
+if [[ "${#staged[@]}" -eq 0 ]]; then
+  exit 0
+fi
+
+echo "pre-commit: checking staged Markdown files..."
+
+for f in "${staged[@]}"; do
+  [[ -f "$f" ]] || continue
+  [[ "$(grep -m2 -c -E '^___$' "$f" 2>/dev/null)" -ge 2 ]] || continue  # skip if no complete metadata block
+
+  if ! bash scripts/metadata-lint.sh "$f" > /dev/null 2>&1; then
+    echo "  FAIL (lint):     $f"
+    EXIT=1
+  fi
+
+  if ! bash scripts/checksum-verify.sh "$f" > /dev/null 2>&1; then
+    echo "  FAIL (checksum): $f"
+    EXIT=1
+  fi
+done
+
+if ! bash scripts/canon-validate.sh > /dev/null 2>&1; then
+  echo "  FAIL (canon):    manifest/CANON.md out of sync — see: bash scripts/canon-validate.sh"
+  EXIT=1
+fi
+
+if [[ "$EXIT" -eq 0 ]]; then
+  echo "pre-commit: all checks passed."
+fi
+
+exit "$EXIT"
