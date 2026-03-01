@@ -1,12 +1,5 @@
 {
   "canonical_documents": [
-    {
-      "pillar": "Canon Index (starting context)",
-      "file_path": "CANON.md",
-      "uuid": "76123faa-d6b9-41f4-b56b-ede07519db37",
-      "version": "1.0.0",
-      "checksum": "a22e53586ffa6c18cc34c6df7cf45b4729ebf95e9a958121b07d358131a0c54f"
-    }
   ],
   "extended_index": [
     {
