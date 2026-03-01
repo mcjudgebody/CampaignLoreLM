@@ -43,16 +43,31 @@ bash scripts/install-hooks.sh   # one-time: activates pre-commit validation
 > your account with no upstream pointing back here. A direct clone will have `origin`
 > set to this repo and `git push` will fail (or worse, succeed if you have access).
 
+> **After step 1, your LLM drives the rest.** Steps 2–4 describe what needs to happen —
+> but in practice you just describe your campaign and ask. The LLM reads `AGENTS.md`
+> on startup and knows the full workflow: it will fill in the templates, generate UUIDs,
+> compute checksums, run the indexing scripts, and promote documents to canon on request.
+> The manual commands below document what it does under the hood.
+
 ### 2. Configure your campaign
 
-Edit **`AGENTS.md` Part II** — fill in your campaign's system, tone, setting, PCs,
-NPCs, and current state. Keep entries brief; heavy lore goes in separate `.md` files.
+**LLM-first:** Open a chat session (e.g. `claude` in the repo root) and describe your
+campaign — system, tone, setting, cast, themes, any special constraints. Ask the LLM to
+fill in `AGENTS.md` Part II and draft `CANON.md` from your description. It knows the
+required structure and placeholder locations.
 
-Edit **`CANON.md`** — fill in setting anchors, timeline, factions, and the authority map.
+**Manual fallback:** Edit `AGENTS.md` Part II directly (system, tone, setting, PCs, NPCs,
+current state) and edit `CANON.md` to fill in setting anchors, timeline, factions, and
+the authority map.
 
 ### 3. Create lore documents
 
-Copy a template from `templates/` to your campaign directory:
+**LLM-first:** Ask the LLM to create a document — e.g. *"Create a lore file for the city
+of Kharys-Vel"* or *"Write an NPC profile for the merchant Dovan."* It will choose the
+right template, generate a UUID, write the content, fix trailing spaces, compute the
+checksum, and index the file in the manifest.
+
+**Manual fallback:** Copy a template and complete each step yourself:
 
 ```bash
 cp templates/lore-template.md World/MyLocation.md
@@ -70,7 +85,11 @@ For each new file:
 
 ### 4. Promote pillar documents to canon
 
-When a document is load-bearing and GM-approved:
+**LLM-first:** Ask the LLM to promote a document — e.g. *"Promote the Kharys-Vel city
+document to canonical status; it's the primary setting reference."* It will run the
+scripts and confirm the result.
+
+**Manual fallback:** When a document is load-bearing and GM-approved:
 
 ```bash
 bash scripts/canon-promote.sh <UUID> --pillar "Description of this document's role"

@@ -17,3 +17,30 @@ Thumbs.db
 # *.pdf
 # *.png
 # *.jpg
+
+# LLM agent artifacts
+.claude/
+.cursor/
+.aider*
+.aider.tags.cache.v*/
+.continue/
+.codeium/
+.copilot/
+.github/copilot-instructions.md
+.windsurfrules
+.coderabbit.yaml
+.mentat/
+.plandex/
+agent-artifacts/
+agent-runs/
+agent-logs/
+agent-scratch/
+scratch/
+scratchpad/
+*.agent.md
+llm-cache/
+.llm-cache/
+vector-store/
+.vector-store/
+chroma/
+lancedb/
