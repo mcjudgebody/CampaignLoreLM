@@ -156,6 +156,8 @@ bash scripts/lore-get.sh --history <UUID> [--last N]   # release history
 UUID lookup order: `extended_index` first, then `canonical_documents` as fallback.
 Both keys live in `canon-manifest.json`. Do not manually edit `canonical_documents`.
 
+**Always use full UUIDs.** All UUID references in any project artifact — script calls, authority pointers, inline cross-references, document metadata — must use the complete five-segment form (e.g. `8d5c9d40-8273-4e95-b125-e432ef80c826`). Abbreviated UUIDs (e.g. `8d5c9d40`) are **not valid** for script lookups and will cause retrieval errors. Never write, copy, or reuse a UUID in abbreviated form.
+
 ---
 
 ## 4) Script Reference
